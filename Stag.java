@@ -56,18 +56,18 @@ class Stag {
       );
       Place raft = new Place("raft",
          "You climb on the raft.\n" +
-         "You see a ship anchored nearby and a beach. Billowing smoke rises from its deck.",
-         "The raft is barely hanging together."
+         "You see the beach and a ship anchored nearby. Billowing smoke rises from its deck.",
+         "The raft is barely hanging together, battered by storms."
       );
       Place ship = new Place("ship",
          "You climb aboard the ship.\n" +
          "In the middle of the ship's deck is a ladder leading to the hull. The raft is tied to the side of the deck.",
-         "The deck smells of ash and blood."
+         "The deck smells of ash and blood. What happened here?"
       );
       Place hull = new Place("hull",
          "You decend into the ship's hull.\n" +
          "Light peers through the hole above leading to the deck.",
-         "The hull is dark, and a fire illumates a table."
+         "The hull is dark, and smouldering wood illumates a table."
       );
       Place forest = new Place("forest",
          "Trees surroud you as you step into the forest.\n" +
@@ -79,14 +79,14 @@ class Stag {
          "The water is so clear you can see to the bottom. Behind you is the forest.",
          "Forest surrounds the lake and you cannot go around."
       );
-      Place bottom = new Place("bottom",
+      Place bottom = new Place("lake bottom",
          "You swim to the bottom of the lake.\n" +
          "You should head back to the lake surface while you still have air.",
          "The lake bottom is clear and eerily almost empty."
       );
       Place clearing = new Place("clearing",
          "You come to a open clearing.\n" +
-         "A hut sits in the middle of the open field. The forest is behind you.",
+         "The forest is behind you. A lock guards a lonely hut.",
          "The clearing looks weathered yet well kept."
       );
       Place hut = new Place("hut",
