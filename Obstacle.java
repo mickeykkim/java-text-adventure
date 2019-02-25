@@ -52,6 +52,7 @@ class Obstacle extends Entity {
       }
       System.out.println(success);
       here.put(revealedPlace);
+      here.remove(this.name);
       return here;
    }
 }
