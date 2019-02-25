@@ -35,11 +35,20 @@ class Place extends Entity {
       links.put(x.name, x);
    }
 
-   // Return the links of this place for looking
+   // Return a deep copy of the current Place's links
    Map<String,Entity> survey() {
-      Map<String,Entity> shallowCopy = new HashMap<String,Entity>();
-      shallowCopy.putAll(links);
-      return shallowCopy;
+      Map<String,Entity> deepCopyLinks = new HashMap<String,Entity>();
+      for (Map.Entry<String,Entity> entry : links.entrySet()) {
+         deepCopyLinks.put(entry.getKey(), entry.getValue());
+      }
+      return deepCopyLinks;
+   }
+
+   // Return a deep copy of the current Place
+   Place copy() {
+      Place deepCopyPlace = new Place(this.name, this.description, this.examine);
+      deepCopyPlace.links = survey();
+      return deepCopyPlace;
    }
 
    // Go to this place
@@ -52,11 +61,8 @@ class Place extends Entity {
          return from;
       }
       Place to = this;
-      // fix this vvv
-      for (Entity e: from.links.values()) e.move(from, to, out);
-      // fix this ^^^
-      Place tempPlace = new Place();
-
+      Place tempCopy = copy();
+      for (Entity e: from.links.values()) e.move(tempCopy, to, out);
       out.println(description);
       for (Entity e: links.values()) e.arrive(to, out);
       return to;

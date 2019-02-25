@@ -44,6 +44,12 @@ class Obstacle extends Entity {
          out.println("Do what to the " + name + "?");
          return here;
       }
+      for (Thing n: needs) {
+         if (here.find(n.name) == null) {
+            out.println(failure);
+            return here;
+         }
+      }
       System.out.println(success);
       here.put(revealedPlace);
       return here;

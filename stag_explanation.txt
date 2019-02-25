@@ -2,15 +2,15 @@ For the assignment, I took the final Stag files and modified them.
 
 First, I addressed all the to-do items.
 
-1. For checking valid commands, I validated the input by checking for spaces. If there were none found, I recursively called read();
+1. For checking valid commands, I validated the input by checking for spaces. If there were none found, I wrote an error message and recursively called read().
 
-2. In the case of multiple-word nouns, I used StringBuilder and a simple loop to append words to the noun string.
+2. In the case of multiple-word nouns, I used StringBuilder and a simple loop to append words to a temporary noun StringBuilder object.
 
-3. For the event of multiple things to solve puzzles, I altered puzzles to denote multiple Thing needs in a list, similar to the contents, and adjusted the code accordingly.
+3. For the event of multiple things to solve puzzles, I altered puzzles to denote multiple Thing needs in a list, similar to the contents, and adjusted the code accordingly. Notably, I had to create methods in Place.java to create a deep copy of the links field and a deep copy of the current Place. This was necessary to take multiple items from Place to Place, otherwise the iterator would fail (because it would add and remove things while iterating).
 
 Next, I implemented some basic helping commands, "help", "examine", and "exit" in the main Stag controller class. The help simply prints out a list of valid commands. The exit command simply prints a thanks for playing message and exits the program.
 
-Examine was a bit more involved and required altering the entity classes to hold another string called "examine". Calling examine <object> would then return the string associated with that object. I extended the examine command to be useful without a noun by returning the current place description and a list of interact-able objects (exits, things, puzzles, obstacles).
+Examine was a bit more involved and required altering the entity classes to hold another string called "examine". Calling examine <object> would then return the string associated with that object. I extended the examine command to be useful without a noun by returning the current place description and a list of interact-able objects (exits, things, puzzles, obstacles) obtained from the Place.survey() method which returns a deep copy of the Place's links field.
 
 Next, I created a new puzzle class of Obstacle.java. This puzzle is similar to the Puzzle.java except instead of returning a thing on completion, it reveals a new exit to a place. This place can then be traveled to.
 

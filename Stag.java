@@ -116,7 +116,7 @@ class Stag {
          "The chest is obstructed by thick vines, a lock, and a code input device.");
       bush.action("cut", new Thing[] {machete}, clearing,
          "You need something sharp.",
-         "You clear the bush."
+         "You clear the bush. The clearing can now be entered."
       );
       safe.action("use", new Thing[] {paper}, new Thing[] {key},
          "You need a code.",
@@ -124,7 +124,7 @@ class Stag {
       );
       lock.action("open", new Thing[] {key}, hut,
          "You need a key.",
-         "You open the lock."
+         "You open the lock. The hut can now be entered."
       );
       chest.action("open", new Thing[] {machete, paper, key}, new Thing[] {button},
          "You need some items to open the chest.",
