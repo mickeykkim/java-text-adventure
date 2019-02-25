@@ -53,8 +53,10 @@ class Puzzle extends Entity {
       System.out.println(success);
       for (Thing c: contents) {
          out.println(c.description);
+         c.setCarried();
          here.put(c);
       }
+      here.remove(this.name);
       return here;
    }
 }

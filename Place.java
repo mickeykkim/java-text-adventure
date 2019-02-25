@@ -35,6 +35,11 @@ class Place extends Entity {
       links.put(x.name, x);
    }
 
+   // Remove a thing from this place
+   void remove(String name) {
+      links.remove(name);
+   }
+
    // Return a deep copy of the current Place's links
    Map<String,Entity> survey() {
       Map<String,Entity> deepCopyLinks = new HashMap<String,Entity>();

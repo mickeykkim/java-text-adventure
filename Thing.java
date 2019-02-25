@@ -45,6 +45,11 @@ class Thing extends Entity {
       out.println(examine);
    }
 
+   // Set thing to carried (if received from a puzzle)
+   void setCarried() {
+      carried = true;
+   }
+
    // When the player moves, and this object is being carried, move
    // with the player.
    void move(Place here, Place there, PrintStream out) {

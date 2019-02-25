@@ -14,6 +14,10 @@ class Stag {
       here.act(here, "go", out);
       while (hasWon == false) {
          read();
+         if (noun.equals(here.name)) {
+            out.println("You are already at the " + here.name + ".");
+            continue;
+         }
          Entity e = here.find(noun);
          if (e == null) {
                out.println("What " + noun + "?");
@@ -29,7 +33,7 @@ class Stag {
    void startText() {
       System.out.println("Welcome to Lucidity, a simple text adventure game.");
       System.out.println("A distant explosion awakens you from a deep sleep.");
-      System.out.println("You see smoke coming from the ship.");
+      System.out.println("You see smoke coming from a ship.");
       System.out.println("Gathering yourself, you stand to your feet.");
    }
 
@@ -52,12 +56,12 @@ class Stag {
       );
       Place raft = new Place("raft",
          "You climb on the raft.\n" +
-         "You see a ship anchored nearby. Billowing smoke rises from its deck.",
+         "You see a ship anchored nearby and a beach. Billowing smoke rises from its deck.",
          "The raft is barely hanging together."
       );
       Place ship = new Place("ship",
-         "After rowing for ages, you climb aboard the ship.\n" +
-         "In the middle of the ship's deck is a ladder leading to the hull.",
+         "You climb aboard the ship.\n" +
+         "In the middle of the ship's deck is a ladder leading to the hull. The raft is tied to the side of the deck.",
          "The deck smells of ash and blood."
       );
       Place hull = new Place("hull",
@@ -67,12 +71,12 @@ class Stag {
       );
       Place forest = new Place("forest",
          "Trees surroud you as you step into the forest.\n" +
-         "There is a clearing beyond a large bush. You see a lake in the distance.",
+         "There is a clearing beyond a large bush. You see a lake and a beach in the distance.",
          "The density of trees makes traveling further impossible."
       );
       Place lake = new Place("lake",
          "You reach a small lake.\n" +
-         "The water is so clear you can see to the bottom.",
+         "The water is so clear you can see to the bottom. Behind you is the forest.",
          "Forest surrounds the lake and you cannot go around."
       );
       Place bottom = new Place("bottom",
@@ -82,12 +86,12 @@ class Stag {
       );
       Place clearing = new Place("clearing",
          "You come to a open clearing.\n" +
-         "A hut sits in the middle of the open field.",
+         "A hut sits in the middle of the open field. The forest is behind you.",
          "The clearing looks weathered yet well kept."
       );
       Place hut = new Place("hut",
          "You enter the hut.\n" +
-         "There is a chest.",
+         "The hut is empty except for a large chest in the corner. The clearing is behind you.",
          "The hut looks to be recently vacated."
       );
       Thing machete = new Thing("machete",
@@ -106,7 +110,7 @@ class Stag {
          "There is a bush here.",
          "Perhaps it could be cut?");
       Puzzle safe = new Puzzle("safe",
-         "There is a safe here.",
+         "There is a safe here with a passcode lock.",
          "It could be opened with the correct code.");
       Obstacle lock = new Obstacle("lock",
          "There is a lock here.",
@@ -118,7 +122,7 @@ class Stag {
          "You need something sharp.",
          "You clear the bush. The clearing can now be entered."
       );
-      safe.action("use", new Thing[] {paper}, new Thing[] {key},
+      safe.action("open", new Thing[] {paper}, new Thing[] {key},
          "You need a code.",
          "You open the safe."
       );
@@ -192,7 +196,6 @@ class Stag {
       System.out.println("  go <somewhere>");
       System.out.println("  take <something>");
       System.out.println("  drop <something>");
-      System.out.println("  use <something>");
       System.out.println("  open <something>");
       System.out.println("  exit");
    }
